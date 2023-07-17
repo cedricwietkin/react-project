@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+.pomodoro{
+    
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    button{
+        margin: 0.5rem;
+    }
+    
+
+    .timer{
+        font-size: 4rem;
+        color: white;
+        font-family: 'Tektur', cursive;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 50vw;
+        border: 2px solid azure;
+        border-radius: 50%;
+        margin: 2rem;
+
+    }
+}
