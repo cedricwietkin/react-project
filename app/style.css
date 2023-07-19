@@ -1,3 +1,232 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tektur&display=swap");
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3fac7;
+  height: 100px;
+}
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem 0 0;
+  /* Sidenav menu links */
+  /* Active class */
+  /* Close btn */
+  /* Icône burger */
+}
+.nav .container .logo img {
+  width: 100px;
+  height: 100px;
+}
+.nav .container .sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -250px;
+  background-color: #d9f2b4;
+  padding-top: 60px;
+  transition: left 0.5s ease;
+}
+.nav .container .sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #2b4d21;
+  display: block;
+  transition: 0.3s;
+}
+.nav .container .sidenav a:hover {
+  color: azure;
+}
+.nav .container .sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.nav .container .sidenav.active {
+  left: 0;
+}
+.nav .container .sidenav .close {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+.nav .container .burger-icon span {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+* {
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.todo {
+  height: 90vh;
+  background-color: #b4ebca;
+}
+
+.todo_first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  margin-top: 0;
+}
+.todo_first .todo_input {
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 60vw;
+  height: 2rem;
+  border-radius: 2rem;
+  border: 2px solid #2b4d21;
+  background-color: #bcf4f5;
+}
+.todo_first .todo_input::placeholder {
+  color: #2b4d21;
+}
+.todo_first .todo_button {
+  padding: 0.5rem;
+  height: 2rem;
+  width: 20vw;
+  border-radius: 2rem;
+  border: 2px solid #2b4d21;
+  color: #2b4d21;
+  background-color: #bcf4f5;
+}
+
+.table {
+  color: #2b4d21;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #ff99c8;
+  border-radius: 2rem;
+  margin: 1rem;
+}
+.table .category {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  position: relative;
+  border-bottom: 2px solid #ffb7c3;
+}
+.table .list {
+  width: 85vw;
+  padding: 0;
+}
+.table .list .todo_iconB {
+  display: flex;
+}
+.table .list .todo_iconB .todo_iconButton {
+  display: none;
+  padding: 0.2rem;
+  margin-left: 0.2rem;
+  border-radius: 2rem;
+  background-color: #bcf4f5;
+}
+.table .list .todo_iconB .todo_iconButton img {
+  width: 1rem;
+}
+.table .list .todo_iconB .todo_check {
+  background-color: #bcf4f5;
+}
+.table .list .todo_iconB .todo_check:active {
+  background-color: #ffb7c3;
+}
+.table .list .todo_item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  position: relative;
+  border: 2px solid #d9f2b4;
+}
+.table .list .todo_item:hover {
+  background-color: #d9f2b4;
+  border: 2px solid #bcf4f5;
+}
+.table .list .todo_item:hover .todo_iconButton {
+  display: block;
+}
+.table .list .todo_item .todo_value {
+  width: 5rem;
+}
+.table .list .todo_item.active .todo_iconButton {
+  display: block;
+}
+.table .list .todo_item_done {
+  background-color: #ffb7c3;
+}
+.table .list .todo_item_done .todo_iconButton {
+  background-color: #ffb7c3;
+}
+.table .list .todo_item_done:hover {
+  background-color: #ffb7c3;
+  border-color: #d9f2b4;
+}
+.table .list .todo_item_done.active .todo_iconButton {
+  display: block;
+}
+
+* {
+  margin: 0;
+}
+
+.pomodoro-background {
+  background-color: #b4ebca;
+}
+
+.short-pause-background {
+  background-color: #ff99c8;
+}
+
+.long-pause-background {
+  background-color: #a9def9;
+}
+
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pomodoro button {
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: #d3fac7;
+  color: #2b4d21;
+}
+.pomodoro .timer {
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  border: 2px solid azure;
+  position: relative;
+  overflow: hidden;
+  font-size: 20vw;
+  color: #2b4d21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem;
+}
+
 * {
   margin: 0;
 }

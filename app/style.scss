@@ -1,4 +1,8 @@
-@import "variables/color.scss";
+@import "Component/variables/color.scss";
+@import "Component/navbar/navbar.scss";
+@import "Component/todo/todo.scss";
+@import "podomoro/podomoro.scss";
+
 *{
     margin: 0;
 }

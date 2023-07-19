@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import './navbar.scss';
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isSideNavOpen, setSideNavOpen] = useState(false);

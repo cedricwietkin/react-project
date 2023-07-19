@@ -1,6 +1,5 @@
 "use client"
 
-
 import React, { useState, useEffect } from 'react';
 import './podomoro.scss';
 import '/app/Component/todo/todo.scss';
@@ -40,6 +39,11 @@ function Pomodoro() {
     return () => clearInterval(timer);
   }, [isRunning, minutes, seconds]);
 
+  const storeDataInLocalStorage = () => {
+    localStorage.setItem('pomodoroMinutes', minutes.toString());
+    localStorage.setItem('pomodoroSeconds', seconds.toString());
+  };
+
   useEffect(() => {
     const storedMinutes = localStorage.getItem('pomodoroMinutes');
     const storedSeconds = localStorage.getItem('pomodoroSeconds');
@@ -51,10 +55,10 @@ function Pomodoro() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('pomodoroMinutes', minutes.toString());
-    localStorage.setItem('pomodoroSeconds', seconds.toString());
+    storeDataInLocalStorage();
   }, [minutes, seconds]);
 
+  
   const handleIncrease = () => {
     setMinutes((prevMinutes) => prevMinutes + 1);
   };
@@ -204,7 +208,8 @@ const handlePause = () => {
           </div>
         )}
       </div>
-      <ToDoList/>
+      
+      <ToDoList />
     </>
   );
 }
