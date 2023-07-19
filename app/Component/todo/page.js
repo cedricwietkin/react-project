@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './todo.scss';
+import useLocalStorage from './uselocalstorage';
 
 function ToDoList() {
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem('todos')) || []
-  );
+  // Utiliser le hook personnalisé useLocalStorage pour gérer 'todos'
+  const [todos, setTodos] = useLocalStorage('todos', []);
+
   const [newTodo, setNewTodo] = useState('');
   const [editIndex, setEditIndex] = useState(null);
-  const inputRef = useRef(null);
 
   const handleInputChange = (e) => {
     setNewTodo(e.target.value);
@@ -46,10 +46,6 @@ function ToDoList() {
     const updatedTodos = todos.filter((_, i) => i !== index);
     setTodos(updatedTodos);
   };
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <>
