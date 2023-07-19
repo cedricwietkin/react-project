@@ -1,3 +1,6 @@
+"use client"
+
+
 import React, { useState, useEffect } from 'react';
 import './podomoro.scss';
 import '/app/Component/todo/todo.scss';
