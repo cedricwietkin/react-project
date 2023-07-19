@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import "./todo.scss";
+import './todo.scss';
 
 function ToDoList() {
   const [todos, setTodos] = useState(
@@ -65,41 +65,52 @@ function ToDoList() {
             ajouter
           </button>
         </div>
-        <form className="table">
-          <div className="category">
-            <p></p>
-            <p>To-do</p>
-            <p>Date</p>
-            <p>Check/Delete</p>
-          </div>
-          <ul className="list">
-            {todos.map((todo, index) => (
-              <li
-                key={index}
-                className={`todo_item ${todo.done ? 'todo_item_done' : ''} ${todo.done && todo.active ? 'active' : ''}`}
-              >
-                <span className="todo_value">{todo.value}</span>
-                <span className="todo_date">{todo.date}</span>
-                <div className={`todo_iconB ${todo.done && todo.active ? 'active' : ''}`}>
-                  <button
-                    type="button"
-                    className="todo_iconButton todo_check"
-                    onClick={() => handleCheckTodo(index)}
+        {todos.length > 0 ? ( // Afficher uniquement si la liste des tâches n'est pas vide
+          <form className="table">
+            <div className="category">
+              <p></p>
+              <p>To-do</p>
+              <p>Date</p>
+              <p>Check/Delete</p>
+            </div>
+            <ul className="list">
+              {todos.map((todo, index) => (
+                <li
+                  key={index}
+                  className={`todo_item ${
+                    todo.done ? 'todo_item_done' : ''
+                  } ${todo.done && todo.active ? 'active' : ''}`}
+                >
+                  <span className="todo_value">{todo.value}</span>
+                  <span className="todo_date">{todo.date}</span>
+                  <div
+                    className={`todo_iconB ${
+                      todo.done && todo.active ? 'active' : ''
+                    }`}
                   >
-                    <img src="./check.svg" alt="Check" />
-                  </button>
-                  <button
-                    type="button"
-                    className="todo_iconButton"
-                    onClick={() => handleDeleteTodo(index)}
-                  >
-                    <img src="./icons8-poubelle.svg" alt="" />
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </form>
+                    <button
+                      type="button"
+                      className="todo_iconButton todo_check"
+                      onClick={() => handleCheckTodo(index)}
+                    >
+                      <img src="./check.svg" alt="Check" />
+                    </button>
+                    <button
+                      type="button"
+                      className="todo_iconButton"
+                      onClick={() => handleDeleteTodo(index)}
+                    >
+                      <img src="./icons8-poubelle.svg" alt="" />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </form>
+        ) : (
+          // Afficher un message si la liste des tâches est vide
+          <p>Aucune tâche à afficher pour le moment.</p>
+        )}
       </div>
     </>
   );
