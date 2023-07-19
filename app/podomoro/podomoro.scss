@@ -1,29 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
-
-.pomodoro{
+@import "/app/variables/color.scss";
+ *{
+    margin: 0;
     
-    background-color: black;
+ }      
+ .pomodoro-background {
+  background-color: $color2; // Couleur par défaut
+}
+
+.short-pause-background {
+  background-color: $color9; // Fond rouge pour le mode "short-pause"
+}
+
+.long-pause-background {
+  background-color: $color00; // Fond bleu pour le mode "long-pause"
+}
+
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: $color4;
+    color: $color6;
+  }
+
+  .timer {
+    width: 50vw; 
+    height: 50vw;
+    border-radius: 50%;
+    border: 2px solid azure;
+    position: relative;
+    overflow: hidden;
+    font-size: 20vw;
+    color: $color6;
+
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: 90vh;
-    button{
-        margin: 0.5rem;
-    }
-    
+    padding: 2rem;
+    margin: 2rem;
 
-    .timer{
-        font-size: 4rem;
-        color: white;
-        font-family: 'Tektur', cursive;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50vw;
-        height: 50vw;
-        border: 2px solid azure;
-        border-radius: 50%;
-        margin: 2rem;
-
-    }
+  }
 }

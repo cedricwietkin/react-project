@@ -1,17 +1,12 @@
-"use client"
-
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import "./todo.scss";
-import Link from 'next/link'
-
 
 function ToDoList() {
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem('todos')) || []
   );
   const [newTodo, setNewTodo] = useState('');
+  const [editIndex, setEditIndex] = useState(null);
   const inputRef = useRef(null);
 
   const handleInputChange = (e) => {
@@ -28,21 +23,21 @@ function ToDoList() {
       setNewTodo('');
     }
   };
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      handleAddTodo(); // Appeler la fonction handleAddTodo lorsqu'Enter est pressé
+      handleAddTodo();
     }
   };
 
-
-  const handleCheckboxChange = (index) => {
-    const updatedTodos = todos.filter((_, i) => i !== index);
+  const handleCheckTodo = (index) => {
+    const updatedTodos = todos.map((todo, i) => {
+      if (i === index) {
+        return { ...todo, done: !todo.done, active: !todo.active };
+      }
+      return todo;
+    });
     setTodos(updatedTodos);
-  };
-
-  const handleEditTodo = (index) => {
-    // Handle editing todo item
-    console.log('Edit todo:', index);
   };
 
   const handleDeleteTodo = (index) => {
@@ -56,11 +51,6 @@ function ToDoList() {
 
   return (
     <>
-    
-    <div className='switch'>
-    <Link href="/">Pomodoro</Link>
-    <Link href="/todo">To-do</Link>
-    </div> 
       <div className="todo">
         <div className="todo_first">
           <input
@@ -80,37 +70,36 @@ function ToDoList() {
             <p></p>
             <p>To-do</p>
             <p>Date</p>
-            <p>Edit/Delete</p>
+            <p>Check/Delete</p>
           </div>
           <ul className="list">
             {todos.map((todo, index) => (
-              <li key={index} className="todo_item">
-                <input
-                  className="todo_checkbox"
-                  type="checkbox"
-                  onChange={() => handleCheckboxChange(index)}
-                />
+              <li
+                key={index}
+                className={`todo_item ${todo.done ? 'todo_item_done' : ''} ${todo.done && todo.active ? 'active' : ''}`}
+              >
                 <span className="todo_value">{todo.value}</span>
                 <span className="todo_date">{todo.date}</span>
-                <div className="todo_iconB">
+                <div className={`todo_iconB ${todo.done && todo.active ? 'active' : ''}`}>
                   <button
-                    className="todo_iconButton"
-                    onClick={() => handleEditTodo(index)}
+                    type="button"
+                    className="todo_iconButton todo_check"
+                    onClick={() => handleCheckTodo(index)}
                   >
-                    <i className="fas fa-edit"></i>
+                    <img src="./check.svg" alt="Check" />
                   </button>
                   <button
+                    type="button"
                     className="todo_iconButton"
                     onClick={() => handleDeleteTodo(index)}
                   >
-                    <i className="fas fa-trash"></i>
+                    <img src="./icons8-poubelle.svg" alt="" />
                   </button>
                 </div>
               </li>
             ))}
           </ul>
         </form>
-       
       </div>
     </>
   );

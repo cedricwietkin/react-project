@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import "/app/variables/color.scss";
+
+* {
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.todo {
+  height: 90vh;
+  background-color: $color2;
+}
+
+.todo_first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  margin-top: 0;
+
+  .todo_input {
+    padding: 0.5rem;
+    margin: 1rem;
+    width: 60vw;
+    height: 2rem;
+    border-radius: 2rem;
+    border: 2px solid $color6;
+    background-color: $color1;
+
+    &::placeholder {
+      color: $color6;
+    }
+  }
+
+  .todo_button {
+    padding: 0.5rem;
+    height: 2rem;
+    width: 20vw;
+    border-radius: 2rem;
+    border: 2px solid $color6;
+    color: $color6;
+    background-color: $color1;
+  }
+}
+
+.table {
+  color: $color6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid $color9;
+  border-radius: 2rem;
+  margin: 1rem;
+
+
+  
+    .category {
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding-top: 1rem;
+        position: relative;
+        border-bottom: 2px solid $color5; 
+      }
+  
+
+  .list {
+    width: 85vw;
+    padding: 0;
+
+    .todo_iconB {
+      display: flex;
+
+      .todo_iconButton {
+        display: none;
+        padding: 0.2rem;
+        margin-left: 0.2rem;
+        border-radius: 2rem;
+        background-color: $color1;
+        img {
+          width: 1rem;
+        }
+      }
+
+      .todo_check {
+        
+        background-color: $color1;
+
+        &:active {
+          background-color: $color5;
+        }
+      }
+    }
+
+    .todo_item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      position: relative;
+      border: 2px solid $color3;
+
+      &:hover {
+        background-color: $color3;
+        border: 2px solid $color1;
+
+        .todo_iconButton {
+          display: block;
+        }
+      }
+
+      .todo_value {
+        width: 5rem;
+      }
+
+      
+      &.active {
+        .todo_iconButton {
+          display: block;
+        }
+      }
+    }
+
+    
+    .todo_item_done {
+      background-color: $color5; 
+      .todo_iconButton {
+        background-color: $color5;
+      }
+
+      &:hover{
+        background-color: $color5 ;
+        border-color: $color3;
+      }
+     
+      &.active {
+        .todo_iconButton {
+          display: block;
+        }
+      }
+    }
+  }
+}
